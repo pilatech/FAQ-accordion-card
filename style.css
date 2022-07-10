@@ -1,0 +1,131 @@
+*,
+*::before,
+*::after {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+}
+
+:root {
+ font-size: 62.5%;
+ --color-primary: hsl(238, 29%, 16%);
+ --color-secondary: hsl(14, 88%, 65%);
+ --color-gradient-start: hsl(273, 75%, 66%);
+ --color-gradient-end: hsl(240, 73%, 65%);
+ --color-text-dark: hsl(237, 12%, 33%);
+ --color-text-light: hsl(240, 6%, 50%);
+ --color-dividers: hsl(240, 5%, 91%);
+}
+
+body {
+ font-family: 'Kumbh Sans', sans-serif;
+ min-height: 100vh;
+ width: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background: linear-gradient(var(--color-gradient-start), var(--color-gradient-end));
+ padding-top: 13rem;
+}
+
+.card {
+ width: 95%;
+ max-width: 37rem;
+ background: #fff;
+ border-radius: 2rem;
+ padding: 14rem 3rem 8rem;
+ position: relative;
+}
+
+.card__hero {
+ height: 25rem;
+ width: 100%;
+ background: 
+ url(images/illustration-woman-online-mobile.svg),
+ url(images/bg-pattern-mobile.svg)
+ ;
+ background-size: 70%;
+ background-position: center top, center 75%;
+ background-repeat: no-repeat;
+ position: absolute;
+ top: -18.5rem;
+ left: 50%;
+ transform: translate(-50%, 27%)
+}
+
+@media (min-width: 1200px){
+ .card {
+  display: flex;
+  max-width: 96rem;
+  align-items: center;
+ }
+ .card__hero {
+  border: 1px solid red;
+  position: static;
+  width: 40%;
+  background-size: 85%;
+  background-position: left, left;
+  transform: translate(-40%, 27%)
+ }
+}
+
+.card__content {
+  font-size: 1.2rem;
+}
+.card__title {
+ font-size: 2.6rem;
+ margin-bottom:  2.5rem;
+ color: var(--color-primary);
+}
+.card__faq {
+ border-bottom: 1px solid var(--color-dividers)
+}
+
+.card__radio {
+ display: none;
+}
+
+.card__faq-question {
+ padding-block: 1.5rem;
+ color: var(--color-text-light);
+ font-weight: 400;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ transition: .2s;
+ cursor: pointer;
+}
+
+.card__faq-question.active {
+ font-weight: 700;
+ color: var(--color-text-dark)
+}
+
+.card__faq-question::after {
+ content: url(images/icon-arrow-down.svg);
+ display: inline-block;
+ cursor: pointer;
+ transition: .2s;
+}
+
+.card__faq-question.active::after {
+ content: url(images/icon-arrow-down.svg);
+ transform:rotate(180deg) ;
+ display: inline-block;
+ cursor: pointer;
+}
+
+.card__faq-answer {
+ visibility: hidden;
+ line-height: 0;
+ opacity: 0;
+ color: var(--color-text-light);
+ transition: opacity .2s;
+}
+
+.card__faq-question.active + .card__faq-answer {
+ visibility: visible;
+ line-height: initial;
+ opacity: 1;
+ margin-bottom: 1.5rem;
+}
